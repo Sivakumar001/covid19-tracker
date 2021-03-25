@@ -1,14 +1,13 @@
 import requests
 from bs4 import BeautifulSoup
-import re
 
 
 class Scraper:
     def __init__(self):
-        # file = requests.get('https://www.worldometers.info/coronavirus/')
-        file = open('rename.html', 'r').read()
-        self.soup = BeautifulSoup(file, 'html.parser')
-        # file.close()
+        file = requests.get('https://www.worldometers.info/coronavirus/')
+        # file = open('rename.html', 'r').read()
+        self.soup = BeautifulSoup(file.text, 'html.parser')
+        file.close()
         self.country_table = self.soup.find(
             'table',
             class_='table table-bordered table-hover main_table_countries',
