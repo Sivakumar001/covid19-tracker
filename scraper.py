@@ -1,5 +1,6 @@
 import requests
 from bs4 import BeautifulSoup
+import re
 
 
 class Scraper:
@@ -41,3 +42,27 @@ class Scraper:
             specific_country_data.append(
                 f"{self.key_title[j]} - {total_data[j].text}")
         return specific_country_data
+
+    def graphical_data(self):
+        # 377 html code line 7 or 10
+        # data regex ""data: \[((\d+,?)+)\]""
+        # categories regex ""categories: \[(\"(\w{3}\s\d{2}),(\s\d{4})+\",?)+\]""
+        data_text = self.soup.findAll('script', type='text/javascript')
+        # sphagetti code for x axis in graph
+        re_data = re.compile(r"data: \[(.*)\]")
+        throwaway_substring = re.search(re_data, data_text[7].string)
+
+        x_data_matches = re.finditer(r"\d+", throwaway_substring.group(1))
+        x_axis = []
+        for match in x_data_matches:
+            x_axis.append(int(match.group()))
+        # for y axis
+        re_dates = re.compile(
+            r"categories: \[(.*)\]")
+        throwaway_substring_y = re.search(re_dates, data_text[7].string)
+        y_data_matches = re.finditer(
+            r"(\"(\w{3}\s\d{2},\s\d{4})+\")+", throwaway_substring_y.group())
+        y_axis = []
+        for match in y_data_matches:
+            y_axis.append(match.group(2))
+        return x_axis, y_axis
