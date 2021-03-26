@@ -2,7 +2,6 @@ from tkinter import ttk
 from tkinter import *
 from scraper import Scraper
 
-example = Scraper()
 mainscreen = Tk()
 mainscreen.geometry("600x600")
 mainscreen.title("coronavirus tracker")
@@ -11,6 +10,7 @@ mainscreen.config(bg='grey')
 Label(mainscreen, text="CORONAVIRUS TRACKER",
       font="arial 24 bold", bg='grey').pack()
 
+example = Scraper()
 # combobox to show list of continents
 input_data = ttk.Combobox(
     mainscreen, values=example.list_of_countries(), state="readonly")
