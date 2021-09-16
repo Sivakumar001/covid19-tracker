@@ -18,7 +18,7 @@
 <blockquote>pip install -r requirments.txt</blockquote>
 
 <p>then run the python file</p>
-<blockquote>python covidtracker.py</blockquote>
+<blockquote>python covidtrackerapp.py</blockquote>
 
 <b>Future Updates to be Created: </b>
 <ol>
