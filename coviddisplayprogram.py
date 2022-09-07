@@ -10,10 +10,10 @@ mainscreen.config(bg='grey')
 Label(mainscreen, text="CORONAVIRUS TRACKER",
       font="arial 24 bold", bg='grey').pack()
 
-example = Scraper()
+scraped_data = Scraper()
 # combobox to show list of continents
 input_data = ttk.Combobox(
-    mainscreen, values=example.list_of_countries(), state="readonly")
+    mainscreen, values=scraped_data.list_of_countries(), state="readonly")
 
 input_data.current(0)
 
@@ -23,7 +23,7 @@ list1 = Listbox(mainscreen, width=28)
 def show_lists():
     list1.delete(0, END)
     for j in range(1, 14):
-        list1.insert(END, example.show_specific_continent(
+        list1.insert(END, scraped_data.show_specific_continent(
             input_data.get())[j])
 
 
