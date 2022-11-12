@@ -1,14 +1,3 @@
-"""
-                            COVID TRACKER
-
-    A Mini Project made on 10 April 2021 by Siva Kumar(212218104154).
-    this project is used to observe the daily count of corona virus
-    cases happening all around the world sorted by every country.
-    this applicationreturns all the numerical count of cases,
-    recovery, deaths and many more.
-
-
-"""
 from tkinter import ttk
 from tkinter import *
 import time
